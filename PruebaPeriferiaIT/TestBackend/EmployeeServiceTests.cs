@@ -53,7 +53,6 @@ namespace TestBackend
             Assert.Contains(result.Data, e => e.Name == "Juan Pérez");
         }
 
-
         [Fact]
         public async Task GetEmployeesByDepartmentAsync_ShouldReturnFailure_WhenDepartmentDoesNotExist()
         {

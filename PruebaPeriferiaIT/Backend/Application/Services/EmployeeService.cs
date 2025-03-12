@@ -12,10 +12,13 @@ namespace PruebaPeriferiaIT.Application.Services
 {
     public class EmployeeService : IEmployeeService
     {
+        #region Property
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IDepartmentRepository _departmentRepository;
         private readonly IMapper _mapper;
+        #endregion
 
+        #region Constructors
         public EmployeeService
         (
             IEmployeeRepository employeeRepository,
@@ -26,7 +29,9 @@ namespace PruebaPeriferiaIT.Application.Services
             _departmentRepository = departmentRepository;
             _mapper = mapper;
         }
+        #endregion
 
+        #region Public Methods
         public async Task<Result<string>> CreateEmployeeAsync(CreateEmployeeRequest employeeRequest)
         {
             var errors = ValidateEmployee(employeeRequest);
@@ -97,8 +102,9 @@ namespace PruebaPeriferiaIT.Application.Services
 
             return Result<IEnumerable<EmployeeDto>>.Success(employeeDtos);
         }
+        #endregion
 
-
+        #region Private Methods
         private decimal CalculateSalary(decimal baseSalary, int position)
         {
             var salaryStrategy = SalaryStrategyFactory.GetStrategy((JobPositionEnum)position);
@@ -124,6 +130,6 @@ namespace PruebaPeriferiaIT.Application.Services
             return errors;
         }
 
-
+        #endregion
     }
 }
