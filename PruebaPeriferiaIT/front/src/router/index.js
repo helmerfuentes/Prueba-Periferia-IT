@@ -1,11 +1,16 @@
+import NotFound from '@/view/notFound.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HelloWorld from '../view/main.vue';
+import MainView from '../view/main.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: HelloWorld },
+  { path: '/', component: MainView },
+  {
+    path: "*",
+    component: NotFound,
+  },
 ];
 
 const router = new VueRouter({
